@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sports Newspaper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar for Source Management -->
+    <aside class="sidebar no-print">
+      <h2>設定</h2>
+      <div class="settings-group">
+        <label for="api-key">Gemini API Key</label>
+        <input type="password" id="api-key" placeholder="AI StudioのAPIキーを入力">
+      </div>
+
+      <h2>情報源の管理</h2>
+      <div class="source-form">
+        <input type="text" id="site-name" placeholder="サイト名 (例: Yahoo!スポーツ)">
+        <input type="url" id="site-url" placeholder="RSSフィード URL">
+        <button id="add-source-btn">追加</button>
+      </div>
+      <ul id="source-list" class="source-list">
+        <!-- Sources will be dynamically added here -->
+      </ul>
+      <div class="actions">
+        <button id="generate-btn" class="primary-btn">記事を生成する</button>
+        <button id="edit-btn" class="secondary-btn">記事を編集する</button>
+        <button id="print-btn" class="secondary-btn">この記事を印刷する</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div id="newspaper-container" class="newspaper-layout">
+        <!-- Generated article will be displayed here -->
+        <div class="placeholder-message no-print">
+          「記事を生成する」ボタンをクリックして、AIスポーツ記事を作成してください。<br>
+          <small>※初回は設定からGemini APIキーを入力してください。</small>
+        </div>
+      </div>
+    </main>
+    <!-- Modal for Swapping Articles -->
+    <div id="swap-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>差し替える記事を選んでください</h2>
+        <div id="spare-list" class="spare-list"></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
